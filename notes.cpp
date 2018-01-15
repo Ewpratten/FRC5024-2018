@@ -13,3 +13,8 @@
 // in robot.h (header guard) :
 #ifndef _Robot_HG_
 #define _Robot_HG_
+// Robot(); = constructor; ~Robot(); = destructor
+namespace name {
+  int x;
+} /*  */
+// ns does not have to be in .h file
