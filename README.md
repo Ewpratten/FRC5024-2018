@@ -1,1 +1,2 @@
-# FRC5024-2018
+# FRC 5024
+## A collection of ecpipse projects, notes, and other stuff for Raider Robotics
