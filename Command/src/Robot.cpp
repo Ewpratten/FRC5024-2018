@@ -1,6 +1,4 @@
-
-#include "Robot.h"
-
+#include "Robot.h" // Include Robot header file
 
 void Robot::RobotInit() {
 	m_chooser.AddDefault("Default Auto", &m_defaultAuto);
@@ -8,13 +6,9 @@ void Robot::RobotInit() {
 	frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
 }
 
-	/**
-	 * This function is called once each time the robot enters Disabled
-	 * mode.
-	 * You can use it to reset any subsystem information you want to clear
-	 * when
-	 * the robot is disabled.
-	 */
+	 
+	// called once, when the robot enters Disabled mode.
+	// You can use it can be used to reset subsystem information when the robot is disabled.
 	void DisabledInit() override {}
 
 	void DisabledPeriodic() override {
@@ -69,14 +63,5 @@ void Robot::RobotInit() {
 	void TeleopPeriodic() override { frc::Scheduler::GetInstance()->Run(); }
 
 	void TestPeriodic() override {}
-
-private:
-	// Have it null by default so that if testing teleop it
-	// doesn't have undefined behavior and potentially crash.
-	frc::Command* m_autonomousCommand = nullptr;
-	ExampleCommand m_defaultAuto;
-	MyAutoCommand m_myAuto;
-	frc::SendableChooser<frc::Command*> m_chooser;
-};
 
 START_ROBOT_CLASS(Robot)
