@@ -38,8 +38,8 @@ Robot::Robot()
 	this->m_pXboxController = new XboxController(DRIVE_JOYSTICK_PORT_ID);
 	
 	// This stuff is for debugging and testing
-	SmartDashboard::PutString("DB/String 5", *m_pLeftFrontMotor);						// What does WPI_TalonSRX(); do? print it to slot 5
-	SmartDashboard::PutString("DB/String 6", *m_pLeftSpeedController);			// What does SpeedControllerGroup(); do? print it to slot 6
+	SmartDashboard::PutNumber("DB/String 5", m_pLeftFrontMotor->Get());						// What does WPI_TalonSRX(); do? print it to slot 5
+	SmartDashboard::PutNumber("DB/String 6", m_pLeftSpeedController->Get());			// What does SpeedControllerGroup(); do? print it to slot 6
 }
 
 Robot::~Robot()
@@ -71,12 +71,13 @@ void Robot::TeleopPeriodic()
 	double forwardSpeed = this->m_pXboxController->GetY(XboxController::kLeftHand);	// Set speed from Y value of joystick
 	double turnAngle = this->m_pXboxController->GetX(XboxController::kLeftHand);		// Set turn angle from X value of joystick
 	
+
 	// Drive the robot!
 	this->m_pRobotDrive->ArcadeDrive(forwardSpeed, turnAngle);
 	
 	// This stuff is for debugging and testing
-	SmartDashboard::PutString("DB/String 0", forwardSpeed);		// print speed to slot 0
-	SmartDashboard::PutString("DB/String 1", turnAngle);			// print turn angle to slot 1
+	SmartDashboard::PutNumber("DB/String 0", forwardSpeed);		// print speed to slot 0
+	SmartDashboard::PutNumber("DB/String 1", turnAngle);			// print turn angle to slot 1
 	
 }
 // Don't mess with this

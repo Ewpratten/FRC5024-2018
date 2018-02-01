@@ -3,11 +3,13 @@
 #define _ROBOT_HG_
 
 // Include FRC libs
+#include <SmartDashboard/SmartDashboard.h>
 #include <IterativeRobot.h>
 #include <ctre/Phoenix.h>
 #include <Drive/DifferentialDrive.h>
 #include <SpeedControllerGroup.h>
 #include <XboxController.h>
+#include <iostream>
 
 // Main object
 class Robot : public frc::IterativeRobot
