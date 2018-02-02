@@ -1,3 +1,10 @@
+/*
+	--CONTROLLER LAYOUT--
+	MOVEMENT: Left Joystick
+	HALF SPEED: Right Bumper
+	REVERSE ORIENTATION: (press and hold) Button B
+	
+*/
 #include "Robot.h"	// Include Robot Lib
 
 // Set ESC IDs for left motors
@@ -9,7 +16,7 @@ const int RIGHT_FRONT_MOTOR_ID = 1;	// Right Front
 const int RIGHT_REAR_MOTOR_ID = 2;	// Right Back
 
 // Set controller port to listen from
-const int DRIVE_JOYSTICK_PORT_ID = 0;
+const int DRIVE_JOYSTICK_PORT_ID = 0;	// Joystick 1
 
 Robot::Robot()
 {
@@ -49,7 +56,7 @@ Robot::~Robot()
 void Robot::TeleopPeriodic()
 {
 	// halfSpeed
-	double SlowMode = (this->m_pXboxController->GetAButton()) ? 0.5 : 1;
+	double SlowMode = (this->m_pXboxController->getBumper(XboxController::kRightHand)) ? 0.5 : 1;
 	
 	// Swap control orientation
 	double ControlDirectionMode_Y = (this->m_pXboxController->GetBButton()) ? 1 : -1;	// If B pressed, ControlDirectionMode_Y = 1 (Setting to one is used to invert forwardSpeed)
