@@ -56,15 +56,15 @@ Robot::~Robot()
 void Robot::TeleopPeriodic()
 {
 	// halfSpeed
-	double SlowMode = (this->m_pXboxController->getBumper(XboxController::kRightHand)) ? 0.5 : 1;
+	double SlowMode = (this->m_pXboxController->GetAButton()) ? 0.55 : 1;
 	
 	// Swap control orientation
 	double ControlDirectionMode_Y = (this->m_pXboxController->GetBButton()) ? 1 : -1;	// If B pressed, ControlDirectionMode_Y = 1 (Setting to one is used to invert forwardSpeed)
-	double ControlDirectionMode_X = (this->m_pXboxController->GetBButton()) ? -1 : 1;	// If B pressed, ControlDirectionMode_X = -1 (Setting to -one is used to invert turnAngle)
+	
 	
 	// Set parameters for use by ArcadeDrive();
 	double forwardSpeed = ((this->m_pXboxController->GetY(XboxController::kLeftHand))*ControlDirectionMode_Y)*SlowMode;	// Set speed from Y value of joystick
-	double turnAngle = ((this->m_pXboxController->GetX(XboxController::kLeftHand))*ControlDirectionMode_X)*SlowMode;		// Set turn angle from X value of joystick
+	double turnAngle = (this->m_pXboxController->GetX(XboxController::kLeftHand))*SlowMode;		// Set turn angle from X value of joystick
 	
 	// Drive the robot!
 	this->m_pRobotDrive->ArcadeDrive(forwardSpeed, turnAngle);
