@@ -37,8 +37,31 @@ void GripperTest::Initialize()
  *
  */
 
+
 void GripperTest::Execute()
 {
+	// grab
+
+	typedef enum _DriveMode { Grab, Release } DriveMode;
+
+	DriveMode mode = Grab;
+	bool current, prev;
+	prev = current = false;
+	// Check the mode toggle button
+	current = CommandBase::pOI->GetJoystickOperator()->GetBButton();
+	if (mode == Grab) {
+		int direction = 1;
+		if (current && !prev){ mode = Release; }
+	}
+	else if (mode == Release) {
+		int direction = -1;
+	    if (current && !prev){ mode = Grab; }
+	}
+	prev = current;
+
+	// I am using a temp function. someone should change this
+	// blah(direction);
+	// belts
 	double forwardSpeed = CommandBase::pOI->GetJoystickOperator()->GetY(XboxController::kLeftHand);
 
 	if (fabs(forwardSpeed) <= XBOX_DEADZONE_LEFT_JOY)
